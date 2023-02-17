@@ -2,6 +2,8 @@ const http = require('http')
 const express = require('express')
 const logger = require('logger')
 const cors = require('cors')
+const socketio = require('socket.io')
+const WebSockets = require('./utils/Websockets')
 require("./config/mongo.js")
 
 const indexRouter = require('./routes/index.js')
@@ -24,6 +26,10 @@ app.use('/users', userRouter)
 app.use('/room', decode, chatRoomRouter)
 
 const server = http.createServer(app)
+
+global.io = socketio(server)
+global.io.on('connection', WebSockets.connection)
+
 server.listen(port)
 server.on("listening", ()=> {
     console.log(`Listening on port ${port}`)

@@ -17,6 +17,7 @@
     "logger": "^0.0.1",
     "mongoose": "^6.9.2",
     "morgan": "^1.10.0",
+    "random-uuid-v4": "^0.0.9",
     "socket.io": "^4.6.0",
     "uuid": "^9.0.0"
   },
